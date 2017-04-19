@@ -8,23 +8,29 @@ class DefaultController extends BaseController
 {
     public function homeAction()
     {
-        if (!empty($_SESSION['user_id']))
-        {
+        if (!empty($_SESSION['user_id'])) {
             $manager = UserManager::getInstance();
             $user = $manager->getUserById($_SESSION['user_id']);
-            
-            echo $this->renderView('home.html.twig',
-                                   ['name' => $user['username']]);
+
+
+            echo "<li><a href='?action=profil'>Profil</a></li>";
+            echo "<li><a href='?action=logout'>logout</a></li>";
+            echo $this->renderView('home.php.twig',
+                ['name' => $user['username']]);
+        } else {
+            echo "<li><a href='?action=register'>Register</a></li>";
+            echo "<li><a href='?action=login'>Login</a></li>";
+            echo $this->renderView('home.php.twig', ['name' => $user = 'Visiteur']);
         }
-        else
-            $this->redirect('login');
+
     }
 
-    public function aboutAction()
+
+    /*public function aboutAction()
     {
         if (!empty($_SESSION['user_id']))
             echo $this->renderView('about.html.twig');
         else
             $this->redirect('login');
-    }
+    }*/
 }

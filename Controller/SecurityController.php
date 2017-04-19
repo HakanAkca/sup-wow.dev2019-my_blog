@@ -27,7 +27,7 @@ class SecurityController extends BaseController
     public function logoutAction()
     {
         session_destroy();
-        echo $this->redirect('login');
+        echo $this->redirect('home');
     }
 
     public function registerAction()

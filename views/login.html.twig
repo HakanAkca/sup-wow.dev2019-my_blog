@@ -1,5 +1,11 @@
-{% extends 'layout.html.twig' %}
-
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>OOP MVC</title>
+    <link rel="stylesheet" href="web/style.css">
+</head>
+<body>
 {% block content %}
     <script src="web/login.js"></script>
     <form action="?action=login" method="POST" name="login-form">
@@ -11,3 +17,6 @@
     <p id="error-block"></p>
     <p id="success-block"></p>
 {% endblock %}
+
+</body>
+</html>

@@ -1,9 +1,9 @@
 routes:
     home: 'Default:home'
-    about: 'Default:about'
     login: 'Security:login'
     logout: 'Security:logout'
     register: 'Security:register'
+    profil: 'User:profil'
 
 defaut_route: 'home'
 

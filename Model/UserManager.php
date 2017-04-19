@@ -94,7 +94,7 @@ class UserManager
         $hash = $this->userHash($data['password']);
 
         if (empty($data['username']) OR empty($user) OR empty($data['password']) OR empty($hash)) {
-            $errors = "Invalid Pseudo or Password";
+            $errors['Connexion field'] = 'invalid Pseudo or Password';
             $isFormGood = false;
         }
 
