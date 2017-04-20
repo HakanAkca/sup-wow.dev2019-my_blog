@@ -8,7 +8,12 @@ class SecurityController extends BaseController
 {
     public function loginAction()
     {
+
         $error = '';
+        if(isset($_SESSION['user_id'])){
+            header('Location: ?action=home');
+            exit(0);
+        }
         if ($_SERVER['REQUEST_METHOD'] === 'POST')
         {
             $manager = UserManager::getInstance();
@@ -33,6 +38,10 @@ class SecurityController extends BaseController
     public function registerAction()
     {
         $error = '';
+        if(isset($_SESSION['user_id'])){
+            header('Location: ?action=home');
+            exit(0);
+        }
         if ($_SERVER['REQUEST_METHOD'] === 'POST')
         {
             $manager = UserManager::getInstance();
@@ -47,6 +56,4 @@ class SecurityController extends BaseController
         }
         echo $this->renderView('register.html.twig', ['error' => $error]);
     }
-
-
 }

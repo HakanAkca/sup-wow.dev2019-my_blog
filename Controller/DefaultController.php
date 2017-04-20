@@ -14,6 +14,7 @@ class DefaultController extends BaseController
 
 
             echo "<li><a href='?action=profil'>Profil</a></li>";
+            echo "<li><a href='?action=article'>Ajouter un article</a></li>";
             echo "<li><a href='?action=logout'>logout</a></li>";
             echo $this->renderView('home.php.twig',
                 ['name' => $user['username']]);

@@ -80,6 +80,7 @@ class UserManager
         $user['email'] = $data['email'];
         $user['password'] = $this->userHash($data['password']);
         $this->DBManager->insert('users', $user);
+        mkdir("uploads/" . $user['username']);
     }
 
     public function userCheckLogin($data)
@@ -114,6 +115,53 @@ class UserManager
         if ($data === false)
             return false;
         $_SESSION['user_id'] = $data['id'];
+        $_SESSION['username'] = $data['username'];
         return true;
+    }
+
+    public function userArticle($data)
+    {
+        header('content-type: application/json');
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Methods: GET, POST');
+        $isFormGood = true;
+        $errors = array();
+
+        if (!isset($data['title']) || strlen($data['title']) < 1) {
+            $errors['titre'] = 'Titre trop court ! Merci de saissir 20 caractères minimum';
+            $isFormGood = false;
+        }
+
+        if (!isset($data['commentary']) || strlen($data['commentary']) < 1) {
+            $errors['text'] = 'Article trop court minimum 500 caractères';
+            $isFormGood = false;
+        }
+
+        if (!empty($_FILES) && isset($_FILES['file']['name'])) {
+            $data['image_name'] = $_FILES['file']['name'];
+            $data['image_tmp'] = $_FILES['file']['tmp_name'];
+        } else {
+            $errors = 'Add image plz';
+            $isFormGood = false;
+        }
+
+        if ($isFormGood) {
+            echo(json_encode(array('success' => true, 'user' => $_POST)));
+        } else {
+            http_response_code(400);
+            echo(json_encode(array('success' => false, 'errors' => $errors)));
+            exit(0);
+        }
+        return $isFormGood;
+    }
+
+    public function userSendArticle($data)
+    {
+        $user['title'] = $data['title'];
+        $user['text'] = $data['commentary'];
+        $user['image'] = 'uploads/' . $_SESSION['username'] . '/' . $data['image_name'];
+        $user['id_user'] = $_SESSION['user_id'];
+        $this->DBManager->insert('com', $user);
+        move_uploaded_file($data['image_tmp'], 'uploads/' . $_SESSION['username'] . '/' . $data['image_name']);
     }
 }

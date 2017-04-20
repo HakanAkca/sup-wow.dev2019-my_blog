@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>OOP MVC</title>
+    <link rel="stylesheet" href="web/style.css">
+    <script src="web/article.js"></script>
+</head>
+<body>
+
+{% block content %}
+    <h1>Crée formulaire article</h1>
+    <form action="?action=article" method="POST" name="article-form">
+        <input type="text" name="title" placeholder="title">
+        <textarea name="commentary" placeholder="commentaire min 500 carracteres "></textarea>
+        <input type="file" name="file" accept="image/*">
+        <input type="submit">
+    </form>
+    <p id="error-block"></p>
+    <p id="success-block"></p>
+{% endblock %}
+
+</body>
+</html>
