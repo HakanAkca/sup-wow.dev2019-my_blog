@@ -11,13 +11,14 @@ class DefaultController extends BaseController
         if (!empty($_SESSION['user_id'])) {
             $manager = UserManager::getInstance();
             $user = $manager->getUserById($_SESSION['user_id']);
+            $articles = $manager->showArticle();
 
 
             echo "<li><a href='?action=profil'>Profil</a></li>";
             echo "<li><a href='?action=article'>Ajouter un article</a></li>";
             echo "<li><a href='?action=logout'>logout</a></li>";
             echo $this->renderView('home.php.twig',
-                ['name' => $user['username']]);
+                ['name' => $user['username'], 'articles' => $articles]);
         } else {
             echo "<li><a href='?action=register'>Register</a></li>";
             echo "<li><a href='?action=login'>Login</a></li>";

@@ -10,6 +10,11 @@
 {% block content %}
     <h1>Mettre tout le contenue de tout les articles présent sur le blog</h1>
     <h1>Coucou {{ name }}</h1>
+    {% for i in articles %}
+        <li>{{ i['title'] }}</li>
+        <li>{{ i['text'] }}</li>
+    {% endfor %}
+
 {% endblock %}
 
 </body>

@@ -137,13 +137,13 @@ class UserManager
             $isFormGood = false;
         }
 
-        if (!empty($_FILES) && isset($_FILES['file']['name'])) {
+        /*if (!empty($_FILES) && isset($_FILES['file']['name'])) {
             $data['image_name'] = $_FILES['file']['name'];
             $data['image_tmp'] = $_FILES['file']['tmp_name'];
         } else {
             $errors = 'Add image plz';
             $isFormGood = false;
-        }
+        }*/
 
         if ($isFormGood) {
             echo(json_encode(array('success' => true, 'user' => $_POST)));
@@ -163,5 +163,11 @@ class UserManager
         $user['id_user'] = $_SESSION['user_id'];
         $this->DBManager->insert('com', $user);
         move_uploaded_file($data['image_tmp'], 'uploads/' . $_SESSION['username'] . '/' . $data['image_name']);
+    }
+
+    public function showArticle()
+    {
+        $show = $this->DBManager->findAllSecure("SELECT * FROM com");
+        return $show;
     }
 }
