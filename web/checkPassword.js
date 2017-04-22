@@ -2,22 +2,18 @@ window.onload = function(){
 
     var errorBlock = document.querySelector('#error-block');
     var successBlock = document.querySelector('#success-block');
-    document.forms['register-form'].onsubmit = function(){
+    document.forms['password-form'].onsubmit = function(){
         successBlock.innerHTML = '';
         errorBlock.innerHTML = '';
-        var params = 'username='+this.elements['username'].value;
-        params += '&email='+this.elements['email'].value;
-        params += '&password='+this.elements['password'].value;
-        params += '&firstname='+this.elements['firstname'].value;
-        params += '&lastname='+this.elements['lastname'].value;
-        params += '&city='+this.elements['city'].value;
-        console.log(params);
+        var params = 'currentPassword='+this.elements['currentPassword'].value;
+        params += '&newPassword='+this.elements['newPassword'].value;
+        params += '&confirmPassword='+this.elements['confirmPassword'].value;
 
         var errorMessage = '';
 
         var http = new XMLHttpRequest();
-        http.open("POST", "?action=register", true);
-        var url = "?action=register";
+        http.open("POST", "?action=edit", true);
+        var url = "?action=edit";
         http.open("POST", url, true);
         http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 

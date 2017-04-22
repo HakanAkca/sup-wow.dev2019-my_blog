@@ -56,6 +56,19 @@ class UserManager
             $errors['password'] = 'Veuillez saisir un mots de passe de 4 caractères minimum';
             $isFormGood = false;
         }
+        if (!isset($data['firstname']) || strlen($data['firstname']) < 4) {
+            $errors['firstname'] = 'Veuillez saisir un pseudo de 4 caractères minimum';
+            $isFormGood = false;
+        }
+        if (!isset($data['lastname']) || strlen($data['lastname']) < 4) {
+            $errors['lastname'] = 'Veuillez saisir un pseudo de 4 caractères minimum';
+            $isFormGood = false;
+        }
+        if (!isset($data['city']) || strlen($data['city']) < 4) {
+            $errors['city'] = 'Veuillez saisir un pseudo de 4 caractères minimum';
+            $isFormGood = false;
+        }
+
 
         if ($isFormGood) {
             echo(json_encode(array('success' => true, 'user' => $_POST)));
@@ -79,6 +92,9 @@ class UserManager
         $user['username'] = $data['username'];
         $user['email'] = $data['email'];
         $user['password'] = $this->userHash($data['password']);
+        $user['firstname'] = $data['firstname'];
+        $user['lastname'] = $data['lastname'];
+        $user['city'] = $data['city'];
         $this->DBManager->insert('users', $user);
         mkdir("uploads/" . $user['username']);
     }
@@ -169,5 +185,43 @@ class UserManager
     {
         $show = $this->DBManager->findAllSecure("SELECT * FROM com");
         return $show;
+    }
+
+    public function checkPassword($data)
+    {
+        header('content-type: application/json');
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Methods: GET, POST');
+        $isFormGood = true;
+        $errors = array();
+
+        if (!isset($data['currentPassword'])) {
+            $errors['titre'] = 'c';
+            $isFormGood = false;
+        }
+
+        if (!isset($data['newPassword'])) {
+            $errors['titre'] = 'a';
+            $isFormGood = false;
+        }
+
+        if (!isset($data['confirmPassword'])) {
+            $errors['titre'] = 'b';
+            $isFormGood = false;
+        }
+
+        if ($isFormGood) {
+            echo(json_encode(array('success' => true, 'user' => $_POST)));
+        } else {
+            http_response_code(400);
+            echo(json_encode(array('success' => false, 'errors' => $errors)));
+            exit(0);
+        }
+        return $isFormGood;
+    }
+
+    public function changePassword($data)
+    {
+
     }
 }

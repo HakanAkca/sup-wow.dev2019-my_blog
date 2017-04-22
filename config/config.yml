@@ -1,9 +1,10 @@
 routes:
     home: 'Default:home'
+    articleview: 'Default:articleView'
     login: 'Security:login'
     logout: 'Security:logout'
     register: 'Security:register'
-    profil: 'User:profil'
+    edit: 'User:edit'
     article: 'User:article'
 
 defaut_route: 'home'

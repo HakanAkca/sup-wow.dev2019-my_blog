@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <title>OOP MVC</title>
     <link rel="stylesheet" href="web/style.css">
-    <script src="web/articleView.js"></script>
 </head>
 <body>
 
@@ -13,9 +12,8 @@
     <h1>Coucou {{ name }}</h1>
     {% for i in articles %}
         <div>{{ i['title'] }}</div>
+        <div>{{ i['text'] }}</div>
         <br>
-        <a href='?action=articleview&article={{ i['title'] }}'>
-            {{ i['title'] }}</a>
     {% endfor %}
 
 {% endblock %}
