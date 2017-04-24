@@ -4,7 +4,9 @@
     <meta charset="utf-8">
     <title>OOP MVC</title>
     <link rel="stylesheet" href="web/style.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <script src="web/articleView.js"></script>
+    <!--<script src="web/hideArticle.js"></script>-->
 </head>
 <body>
 
@@ -12,10 +14,11 @@
     <h1>Mettre tout le contenue de tout les articles présent sur le blog</h1>
     <h1>Coucou {{ name }}</h1>
     {% for i in articles %}
-        <div>{{ i['title'] }}</div>
         <br>
-        <a href='?action=articleview&article={{ i['title'] }}'>
+        <br>
+        <a class="lienvisible" href='?action=articleview&article={{ i['title'] }}'>
             {{ i['title'] }}</a>
+
     {% endfor %}
 
 {% endblock %}

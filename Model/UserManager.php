@@ -137,11 +137,9 @@ class UserManager
 
     public function userArticle($data)
     {
-        header('content-type: application/json');
-        header('Access-Control-Allow-Origin: *');
-        header('Access-Control-Allow-Methods: GET, POST');
         $isFormGood = true;
         $errors = array();
+        $result = array();
 
         if (!isset($data['title']) || strlen($data['title']) < 1) {
             $errors['titre'] = 'Titre trop court ! Merci de saissir 20 caractères minimum';
@@ -153,32 +151,34 @@ class UserManager
             $isFormGood = false;
         }
 
-        /*if (!empty($_FILES) && isset($_FILES['file']['name'])) {
-            $data['image_name'] = $_FILES['file']['name'];
-            $data['image_tmp'] = $_FILES['file']['tmp_name'];
-        } else {
-            $errors = 'Add image plz';
+        /*if (isset($_FILES['uploads_file']['name']) && !empty($_FILES)){
+            $data['image'] = $_FILES['uploads_file']['name'];
+            $data['image_tmp_name'] = $_FILES['uploads_file']['tmp_name'];
+            $result['data'] = $data;
+        }
+        else{
+            $errors['image'] = 'Veillez choisir une image';
             $isFormGood = false;
         }*/
 
         if ($isFormGood) {
             echo(json_encode(array('success' => true, 'user' => $_POST)));
         } else {
-            http_response_code(400);
-            echo(json_encode(array('success' => false, 'errors' => $errors)));
+            echo(json_encode(array('success' => false, 'error' => $errors)));
             exit(0);
         }
-        return $isFormGood;
+        $result['isFormGood'] = $isFormGood;
+        return $result;
     }
 
     public function userSendArticle($data)
     {
         $user['title'] = $data['title'];
         $user['text'] = $data['commentary'];
-        $user['image'] = 'uploads/' . $_SESSION['username'] . '/' . $data['image_name'];
+        $user['image'] = 'uploads/' . $_SESSION['username'] . '/' . $_FILES['uploads_file']['name'];
         $user['id_user'] = $_SESSION['user_id'];
         $this->DBManager->insert('com', $user);
-        move_uploaded_file($data['image_tmp'], 'uploads/' . $_SESSION['username'] . '/' . $data['image_name']);
+        move_uploaded_file($_FILES['uploads_file']['tmp_name'], 'uploads/' . $_SESSION['username'] . '/' . $_FILES['uploads_file']['name']);
     }
 
     public function showArticle()

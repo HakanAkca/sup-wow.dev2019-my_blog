@@ -38,7 +38,7 @@ class DefaultController extends BaseController
 
             echo "<li><a href='?action=home'>Home</a></li>";
             echo "<li><a href='?action=logout'>logout</a></li>";
-            echo $this->renderView('articleView.php.twig', ['$articles' => $articles]);
+            echo $this->renderView('articleView.php.twig', ['articles' => $articles]);
         }else {
             $manager = UserManager::getInstance();
             $articles = $manager->showArticle();
