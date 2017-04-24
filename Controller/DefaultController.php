@@ -31,17 +31,16 @@ class DefaultController extends BaseController
 
     public function articleViewAction()
     {
-        if (!empty($_SESSION['user_id']))
-        {
+        if (!empty($_SESSION['user_id'])) {
             $manager = UserManager::getInstance();
-            $articles = $manager->showArticle();
+            $articles = $manager->showSpecificArticle();
 
-            echo "<li><a href='?action=home'>Home</a></li>";
+            echo "<li><a href='?action=h<=ome'>Home</a></li>";
             echo "<li><a href='?action=logout'>logout</a></li>";
             echo $this->renderView('articleView.php.twig', ['articles' => $articles]);
-        }else {
+        } else {
             $manager = UserManager::getInstance();
-            $articles = $manager->showArticle();
+            $articles = $manager->showSpecificArticle();
             echo "<li><a href='?action=register'>Register</a></li>";
             echo "<li><a href='?action=login'>Login</a></li>";
             echo $this->renderView('articleView.php.twig', ['articles' => $articles]);

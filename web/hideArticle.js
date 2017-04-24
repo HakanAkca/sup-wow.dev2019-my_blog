@@ -1,13 +1,12 @@
-jQuery(function() {
+$(document).ready(function()
+{
     $(".hide").hide();
-    $(".lienvisible").click(function() {
-        // on recupere le lien dans le DOM
-        var $link = $(this);
+    $( ".lienvisible" ).on( "click", function()
+    {
+        var jObj = $( this ).nextAll( '.hide' ).eq( 0 );
 
-        // on recupere la balise hide suivant le lien dans le DOM
-        var $hide = $link.next('.hide');
 
-        // on remonte toutes les balises hide
-        $('.hide').show();
+        $( ".hide" ).not( jObj ).slideUp( "slow" );
+        jObj.slideToggle( 'slow' );
     });
 });

@@ -14,12 +14,11 @@
     <h1>Mettre tout le contenue de tout les articles présent sur le blog</h1>
     <h1>Coucou {{ name }}</h1>
     {% for i in articles %}
-        <div class="hide">
-            {{ i['title'] }}
-            {{ i['text'] }}
-            <img src="{{ i['image'] }}">
-        </div>
-        <br>
+        {% if not loop.first and not loop.last %}
+            <div>
+                {{ i }}
+            </div>
+        {% endif %}
     {% endfor %}
 
 {% endblock %}

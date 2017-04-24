@@ -12,4 +12,4 @@ function $_GET(param) {
         return vars;
     }
 
-    var matricule = decodeURI($_GET('articles'));
+    var matricule = decodeURI($_GET('article'));

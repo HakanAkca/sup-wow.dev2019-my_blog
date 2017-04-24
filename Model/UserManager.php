@@ -187,6 +187,14 @@ class UserManager
         return $show;
     }
 
+    public function showSpecificArticle()
+    {
+        $title = $_GET['article'];
+        $show = $this->DBManager->findOneSecure("SELECT * FROM com WHERE title = :title", ['title' => $title]);
+        var_dump($show);
+        return $show;
+    }
+
     public function checkPassword($data)
     {
         header('content-type: application/json');
