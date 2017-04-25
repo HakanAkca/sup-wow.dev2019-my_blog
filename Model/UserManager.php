@@ -173,10 +173,12 @@ class UserManager
 
     public function userSendArticle($data)
     {
+        echo $_SESSION['username'];
         $user['title'] = $data['title'];
         $user['text'] = $data['commentary'];
         $user['image'] = 'uploads/' . $_SESSION['username'] . '/' . $_FILES['uploads_file']['name'];
-        $user['id_user'] = $_SESSION['user_id'];
+        $user['user_id'] = $_SESSION['user_id'];
+        $user['user_name'] = $_SESSION['username'];
         $this->DBManager->insert('com', $user);
         move_uploaded_file($_FILES['uploads_file']['tmp_name'], 'uploads/' . $_SESSION['username'] . '/' . $_FILES['uploads_file']['name']);
     }
@@ -192,11 +194,11 @@ class UserManager
         return $this->DBManager->findAllSecure("SELECT * FROM com WHERE title = :title", ['title' => $title]);
     }
 
-    public function showAllProfil()
+    public function showAllProfil($id)
     {
-        $show = $this->DBManager->findAllSecure("SELECT users.id, users.username, users.firstname, users.lastname, users.city 
+        $show = $this->DBManager->findOneSecure("SELECT users.id, users.username, users.email , users.firstname, users.lastname, users.city, com.user_id 
                                                  FROM users 
-                                                 INNER JOIN com ON users.id = com.user_id");
+                                                 INNER JOIN com ON users.id = com.user_id WHERE user_id = :id", ['id' => $id['profil']]);
         var_dump($show);
         return $show;
     }

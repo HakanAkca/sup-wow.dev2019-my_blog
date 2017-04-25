@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost
--- Généré le :  Mar 25 Avril 2017 à 14:11
+-- Généré le :  Mar 25 Avril 2017 à 16:27
 -- Version du serveur :  5.6.35
 -- Version de PHP :  7.1.1
 
@@ -33,7 +33,11 @@ CREATE TABLE `com` (
 --
 
 INSERT INTO `com` (`id`, `title`, `text`, `image`, `user_id`) VALUES
-(78, 'sdfjsqdnkfnjk', 'qskfnkqsdnfksnjdf', 'uploads/admin/img.png', 27);
+(78, 'sdfjsqdnkfnjk', 'qskfnkqsdnfksnjdf', 'uploads/admin/img.png', 27),
+(79, 'sdfnqsdfn', 'qskjdnfkqsdnfknqsdf', 'uploads/admin2/img2.jpg', 28),
+(80, 'hakanhakanhkan', 'jkdskfbqsdfjlqsdljfqsdf', 'uploads/admin2/img3.jpg', 28),
+(81, 'nike bien ta mere', 'nike bien ta mere', 'uploads/admin/img.png', 27),
+(82, 'HAKAN', 'HAKAN', 'uploads/admin/img3.jpg', 27);
 
 -- --------------------------------------------------------
 
@@ -68,7 +72,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `firstname`, `lastname`, `city`) VALUES
-(27, 'admin', 'hakan.akca@supinternet.fr', '$2y$10$c2FsdHlzYWx0eXNhbHR5cuFYLWqyckAGswm2.X4Qs/DrZlN4kmx/a', 'hakan', 'akca', 'paris');
+(27, 'admin', 'hakan.akca@supinternet.fr', '$2y$10$c2FsdHlzYWx0eXNhbHR5cuFYLWqyckAGswm2.X4Qs/DrZlN4kmx/a', 'hakan', 'akca', 'paris'),
+(28, 'admin2', 'hakan.akca@supinternet.fr', '$2y$10$c2FsdHlzYWx0eXNhbHR5cuzj9qkKiCpTp1u0VGOYpG/Z4EQXG/gym', 'hakan2', 'hakan2', 'paris2'),
+(29, 'hakan', 'hakan.akca@supinternet.fr', '$2y$10$c2FsdHlzYWx0eXNhbHR5cusbU.jhZ3/Zaoa0X2v3/o1mXueLcWACG', 'hakan', 'hakan', 'paris');
 
 --
 -- Index pour les tables exportées
@@ -103,7 +109,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `com`
 --
 ALTER TABLE `com`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 --
 -- AUTO_INCREMENT pour la table `commentary`
 --
@@ -113,7 +119,7 @@ ALTER TABLE `commentary`
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 --
 -- Contraintes pour les tables exportées
 --
@@ -123,3 +129,4 @@ ALTER TABLE `users`
 --
 ALTER TABLE `com`
   ADD CONSTRAINT `com_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
