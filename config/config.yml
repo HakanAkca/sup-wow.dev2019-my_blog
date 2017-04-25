@@ -1,5 +1,6 @@
 routes:
     home: 'Default:home'
+    profilview: 'Default:profilView'
     articleview: 'Default:articleView'
     login: 'Security:login'
     logout: 'Security:logout'
@@ -14,9 +15,3 @@ db_config:
     host: 'localhost'
     user: 'root'
     pass: 'root'
-
-services:
-    twig.extension.debug:
-        class:        Twig_Extension_Debug
-        tags:
-             - { name: 'twig.extension' }

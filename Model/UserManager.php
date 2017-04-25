@@ -183,14 +183,20 @@ class UserManager
 
     public function showArticle()
     {
-        $show = $this->DBManager->findAllSecure("SELECT * FROM com");
-        return $show;
+        return $this->DBManager->findAllSecure("SELECT * FROM com");
     }
 
     public function showSpecificArticle()
     {
         $title = $_GET['article'];
-        $show = $this->DBManager->findAllSecure("SELECT * FROM com WHERE title = :title", ['title' => $title]);
+        return $this->DBManager->findAllSecure("SELECT * FROM com WHERE title = :title", ['title' => $title]);
+    }
+
+    public function showAllProfil()
+    {
+        $show = $this->DBManager->findAllSecure("SELECT users.id, users.username, users.firstname, users.lastname, users.city 
+                                                 FROM users 
+                                                 INNER JOIN com ON users.id = com.user_id");
         var_dump($show);
         return $show;
     }

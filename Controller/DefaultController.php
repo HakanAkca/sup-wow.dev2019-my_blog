@@ -16,6 +16,7 @@ class DefaultController extends BaseController
 
             echo "<li><a href='?action=edit'>Edition du profil</a></li>";
             echo "<li><a href='?action=article'>Ajouter un article</a></li>";
+            echo "<li><a href='?action=profil'>Voir les profils</a></li>";
             echo "<li><a href='?action=logout'>logout</a></li>";
             echo $this->renderView('home.php.twig',
                 ['name' => $user['username'], 'articles' => $articles]);
@@ -24,6 +25,7 @@ class DefaultController extends BaseController
             $articles = $manager->showArticle();
             echo "<li><a href='?action=register'>Register</a></li>";
             echo "<li><a href='?action=login'>Login</a></li>";
+            echo "<li><a href='?action=profil'>Voir les profils</a></li>";
             echo $this->renderView('home.php.twig', ['name' => $user = 'Visiteur', 'articles' => $articles]);
         }
 
@@ -35,7 +37,7 @@ class DefaultController extends BaseController
             $manager = UserManager::getInstance();
             $articles = $manager->showSpecificArticle();
 
-            echo "<li><a href='?action=h<=ome'>Home</a></li>";
+            echo "<li><a href='?action=home'>Home</a></li>";
             echo "<li><a href='?action=logout'>logout</a></li>";
             echo $this->renderView('articleView.php.twig', ['articles' => $articles]);
         } else {
@@ -44,6 +46,26 @@ class DefaultController extends BaseController
             echo "<li><a href='?action=register'>Register</a></li>";
             echo "<li><a href='?action=login'>Login</a></li>";
             echo $this->renderView('articleView.php.twig', ['articles' => $articles]);
+        }
+    }
+
+    public function profilViewAction()
+    {
+        if (!empty($_SESSION['user_id']))
+        {
+            $manager = UserManager::getInstance();
+            $profil = $manager->showAllProfil();
+
+            echo "<li><a href='?action=home'>Home</a></li>";
+            echo "<li><a href='?action=logout'>logout</a></li>";
+            echo $this->renderView('profilView.php.twig', ['profils' => $profil]);
+        } else {
+            $manager = UserManager::getInstance();
+            $profil = $manager->showAllProfil();
+
+            echo "<li><a href='?action=register'>Register</a></li>";
+            echo "<li><a href='?action=login'>Login</a></li>";
+            echo $this->renderView('profilView.php.twig', ['profils' => $profil]);
         }
     }
 

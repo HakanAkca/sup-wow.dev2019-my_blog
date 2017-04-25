@@ -15,9 +15,12 @@
     <h1>Coucou {{ name }}</h1>
     {% for i in articles %}
             <div>
+                <div><a class="lienvisible" href='?action=profilview&profil={{ i['user_id'] }}'>
+                        {{ i['user_id'] }}</a></div>
                 <div>{{ i['title'] }}</div>
                 <div>{{ i['text'] }}</div>
                 <img src="{{ i['image'] }}">
+
             </div>
     {% endfor %}
 
