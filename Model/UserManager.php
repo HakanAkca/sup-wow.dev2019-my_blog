@@ -190,7 +190,7 @@ class UserManager
     public function showSpecificArticle()
     {
         $title = $_GET['article'];
-        $show = $this->DBManager->findOneSecure("SELECT * FROM com WHERE title = :title", ['title' => $title]);
+        $show = $this->DBManager->findAllSecure("SELECT * FROM com WHERE title = :title", ['title' => $title]);
         var_dump($show);
         return $show;
     }
