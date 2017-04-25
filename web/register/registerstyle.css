@@ -1,0 +1,169 @@
+@font-face {
+    font-family: "wow";
+    src: url("font/wow.ttf");
+}
+
+@font-face {
+    font-family: "volkorn";
+    src: url("font/volkorn.ttf");
+}
+
+html{
+    overflow: hidden;
+}
+.video{
+    display: none;
+}
+a{
+    color: #670502;
+}
+.register{
+    font-size: 20px;
+}
+
+input{
+    margin-top: 5px;
+    margin-left: 0px;
+    width: 230px;
+    height: 30px;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: black;
+    padding: 5px;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.username {
+    margin-left: 10px;
+}
+.email{
+    margin-left: 10px;
+}
+
+.sup-wow{
+    margin-bottom: 20px;
+    font-family: "wow";
+}
+.submit {
+    margin-left: 0px;
+    margin-top: 10px;
+    display: inline-block;
+    outline: 0;
+    background: #670502;
+    color: #a7df35;
+    white-space: nowrap;
+    padding: .1em 1.6em;
+    text-decoration: none;
+    text-shadow: 0 -1px #000;
+    font-weight: normal;
+    box-shadow: 1px 1px 0px #560000, 1px 1px 0px #560000, 1px 1px 0px #560000, 1px 1px 0px #560000, 3px 3px 0px black;
+    top: -5px;
+    transition: all .1s ease-in-out;
+    border-radius: 5px;
+}
+
+.submit:hover {
+    color: yellow;
+    background: #560000;
+    box-shadow: 1px 1px 0px #560000, 2px 2px 0px #560000, 3px 3px 0px #560000, 4px 4px 0px black;
+    position: relative;
+    top: -3px;
+    left: 2px;
+    transition: all .1s ease-in-out;
+    cursor: url(http://files.simey.me/wow-cursor.png), auto;
+}
+
+input:-webkit-autofill{
+    -webkit-box-shadow: 0 0 0 1000px white inset;
+}   
+
+.register-block {
+    font-size: 20px;
+    font-family: volkorn;
+    position: absolute;
+    padding-top: 10px;
+    display: flex;
+    height: 370px;
+    width: 300px;
+    padding-left: 10px;
+    padding-right: 10px;
+    top : 42%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-image: linear-gradient(#a7df35, #4e551f);
+    filter: drop-shadow(0px 0px 25px #d6ec55);
+    color: #44481a;
+    text-align: center;
+
+    border-radius: 15px;
+}
+.video {
+    display: block;
+    z-index: -1;
+    width: 100%;
+    height: 110%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0%;
+    position: fixed;
+    object-fit: cover;
+}
+
+
+@media screen and (min-width: 641px) and (max-width: 1024px) {
+    .video{
+        display: block;
+    }
+    .register-block {
+        top : 60%;
+        padding-top: 10px;
+        width: 500px;
+        height: 300px;
+    }
+    input{
+        margin-left: 100px;
+    }
+    .username {
+        margin-left: 160px;
+    }
+    .email{
+        margin-left: 160px;
+    }
+    .password{
+        margin-left: 135px;
+    }
+}
+
+
+@media screen and (min-width: 1025px){
+
+    .register-block{
+        top : 60%;
+        padding-top: 10px;
+        width: 700px;
+        height: 340px;
+    }
+    input{
+        margin-left: 100px;
+    }
+    .username {
+        margin-left: 160px;
+    }
+    .email{
+        margin-left: 165px;
+    }
+    .password{
+        margin-left: 133px;
+    }
+
+    .register{
+        font-size: 25px;
+    }
+}

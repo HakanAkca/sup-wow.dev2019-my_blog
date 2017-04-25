@@ -3,7 +3,10 @@
 <head>
     <meta charset="utf-8">
     <title>OOP MVC</title>
-    <link rel="stylesheet" href="web/style.css">
+    <link rel="stylesheet" href="web/home/stylehome.css">
+    <link rel="stylesheet" href="web/header/styleheader.css">
+    <link rel="stylesheet" href="web/articles/articlesstyle.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <script src="web/articleView.js"></script>
     <!--<script src="web/hideArticle.js"></script>-->
@@ -11,17 +14,18 @@
 <body>
 
 {% block content %}
-    <h1>Mettre tout le contenue de tout les articles présent sur le blog</h1>
-    <h1>Coucou {{ name }}</h1>
+    <div class="articles-view">
     {% for i in articles %}
-            <div>
-                <div><a class="lienvisible" href='?action=profilview&profil={{ i['user_id'] }}crWmp%0pdsaDcleRasmce{{ i['title'] }}lslkdnvopvFSAM£'>
-                        {{ i['user_name'] }}</a></div>
-                <div>{{ i['title'] }}</div>
-                <div>{{ i['text'] }}</div>
-                <img src="{{ i['image'] }}">
-
-            </div>
+        <div>
+            <div><a class="lienvisible"
+                    href='?action=profilview&profil={{ i['user_id'] }}crWmp%0pdsaDcleRasmce{{ i['title'] }}lslkdnvopvFSAM£'>
+                    {{ i['user_name'] }}</a></div>
+            <div>{{ i['title'] }}</div>
+            <div>{{ i['text'] }}</div>
+            <img src="{{ i['image'] }}">
+        </div>
+        </div>
+        <div class="content"></div>
     {% endfor %}
 
 {% endblock %}

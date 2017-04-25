@@ -18,7 +18,7 @@ window.onload = function(){
 
         http.onload = function() {
             if(http.readyState == 4 && http.status == 200) {
-                window.location = 'http://localhost:8888/sup-wow.dev2019-my_blog/?action=login';
+                window.location = 'http:/sup-wow.dev2019-my_blog/?action=login';
             } else{
                 var errors = JSON.parse(http.responseText);
                 for(var error in errors['errors']){

@@ -18,7 +18,11 @@ class UserController extends BaseController
             } else
                 $this->redirect('login');
         }
-        echo "<li><a href='?action=logout'>logout</a></li>";
+        echo "<div class='header'>";
+        echo "<li><a href='?action=home'>Home</a></li>";
+        echo "<li><a href='?action=edit'>Profil</a></li>";
+        echo "<li><a href='?action=logout'>Se déconnecter</a></li>";
+        echo "</div>";
         echo $this->renderView('article.php.twig', ['error' => $error]);
     }
 
@@ -33,7 +37,11 @@ class UserController extends BaseController
             } else
                 $this->redirect('login');
         }
-        echo "<li><a href='?action=logout'>logout</a></li>";
+        echo "<div class='header'>";
+        echo "<li><a href='?action=home'>Home</a></li>";
+        echo "<li><a href='?action=e'>Profil</a></li>";
+        echo "<li><a href='?action=logout'>Se déconnecter</a></li>";
+        echo "</div>";
         echo $this->renderView('edit.php.twig', ['error' => $error]);
     }
 }

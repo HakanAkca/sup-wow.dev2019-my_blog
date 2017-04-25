@@ -3,22 +3,25 @@
 <head>
     <meta charset="utf-8">
     <title>OOP MVC</title>
-    <link rel="stylesheet" href="web/style.css">
+    <link rel="stylesheet" href="web/edit/editstyle.css">
+    <link rel="stylesheet" href="web/home/stylehome.css">
+    <link rel="stylesheet" href="web/header/styleheader.css">
     <script src="web/checkPassword.js"></script>
 </head>
 <body>
 
 {% block content %}
-    <h1>Mettre tout le contenue de tout les articles présent sur le blog</h1>
-    <h1>Coucou {{ name }}</h1>
-    <form action="?action=edit" method="POST" name="password-form">
-        Current Password : <input type="password" name="currentPassword">
-        NewPassword : <input type="password" name="newPassword">
-        Confirm Password :<input type="password" name="confirmPassword">
-        <input type="submit" name="submit" value="Submit">
-    </form>
-    <p id="error-block"></p>
-    <p id="success-block"></p>
+    <div class="edit-view">
+        <form action="?action=edit" method="POST" name="password-form">
+            Current Password : <input type="password" name="currentPassword"><br>
+            NewPassword : <input type="password" name="newPassword"><br>
+            Confirm Password :<input type="password" name="confirmPassword"><br>
+            <input type="submit" name="submit" value="Submit">
+        </form>
+        <p id="error-block"></p>
+        <p id="success-block"></p>
+    </div>
+    <div class="content"></div>
 {% endblock %}
 
 </body>

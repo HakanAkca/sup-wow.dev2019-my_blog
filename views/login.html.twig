@@ -1,22 +1,28 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>OOP MVC</title>
-    <link rel="stylesheet" href="web/style.css">
-    <script src="web/login.js"></script>
-</head>
-<body>
 {% block content %}
-    <form action="?action=login" method="POST" name="login-form">
-        Login : <input type="text" name="username"><br>
-        Password : <input type="password" name="password"><br>
-        <input type="submit">
-    </form>
-    <a href="?action=register">Register</a>
-    <p id="error-block"></p>
-    <p id="success-block"></p>
-{% endblock %}
+    <video class="video" loop muted autoplay>
+        <source src="web/login/background.mp4" type="video/mp4">
+    </video>
 
-</body>
-</html>
+    <script src="web/login.js"></script>
+    <link rel="stylesheet" href="web/login/loginstyle.css">
+    <link rel="stylesheet" href="web/header/styleheader.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <div class="header">
+        <li><a href='?action=home'>Home</a></li>
+        <li><a href='?action=register'>Register</a></li>
+    </div>
+    <div>
+        <div class="connexion-block">
+            <span class="sup-wow">BLOG SUP'WOW</span>
+            <form action="?action=login" method="POST" name="login-form" class="form">
+                Login :<input type="text" name="username" class="username"><br>
+                Password : <input type="password" name="password" class=""><br>
+                <input type="submit" class="submit" value="Se connecter !">
+            </form>
+            <div class="register"><a href="?action=register">Pas encore inscrit !</a></div>
+            <p id="error-block"></p>
+            <p id="success-block"></p>
+        </div>
+    </div>
+{% endblock %}

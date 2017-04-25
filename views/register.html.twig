@@ -1,26 +1,26 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>OOP MVC</title>
-    <link rel="stylesheet" href="web/style.css">
-    <script src="web/script.js"></script>
-</head>
-<body>
 {% block content %}
-    <form action="?action=register" method="POST" name="register-form">
-        Login : <input type="text" name="username"><br>
-        Email : <input type="text" name="email"><br>
-        Password : <input type="password" name="password"><br>
-        Firstname : <input type="text" name="firstname"><br>
-        Lastname : <input type="text" name="lastname"><br>
-        City : <input type="text" name="city"><br>
-        <input type="submit">
-    </form>
-    <a href="?action=login">You have account ? Go Singin</a>
-    <p id="error-block"></p>
-    <p id="success-block"></p>
-{% endblock %}
+    <script src="web/script.js"></script>
+    <link rel="stylesheet" href="web/register/registerstyle.css">
+    <link rel="stylesheet" href="web/header/styleheader.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-</body>
-</html>
+    <video class="video" loop muted autoplay>
+        <source src="web/login/background.mp4" type="video/mp4">
+    </video>
+    <div class="header">
+        <li><a href='?action=home'>Home</a></li>
+        <li><a href='?action=login'>Login</a></li>
+    </div>
+    <div class="register-block">
+        <span class="sup-wow"> Creer un compte !</span>
+        <form action="?action=register" method="POST" name="register-form">
+            Login : <input type="text" name="username" class="username"><br><br>
+            Email : <input type="text" name="email" class="email"><br><br>
+            Password : <input type="password" name="password" class="password"><br><br>
+            <input type="submit" class="submit" value="S'enregistrer !">
+        </form>
+        <a href="?action=login" class="register">Tu as déjà un compte ?</a>
+        <p id="error-block"></p>
+        <p id="success-block"></p>
+    </div>
+{% endblock %}

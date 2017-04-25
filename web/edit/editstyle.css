@@ -1,0 +1,12 @@
+.edit-view{
+    color: white;
+    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+    height: 90%;
+    margin: auto auto auto auto;
+    vertical-align: middle;
+}
