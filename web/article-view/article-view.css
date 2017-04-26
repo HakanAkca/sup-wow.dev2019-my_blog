@@ -11,6 +11,10 @@
     vertical-align: middle;
 }
 
+.h1{
+    margin-top: 30px;
+}
+
 input{
     margin-top: 5px;
     margin-left: 0px;
@@ -40,6 +44,17 @@ input{
     top: -5px;
     transition: all .1s ease-in-out;
     border-radius: 5px;
+}
+
+.submit:hover {
+    color: yellow;
+    background: #560000;
+    box-shadow: 1px 1px 0px #560000, 2px 2px 0px #560000, 3px 3px 0px #560000, 4px 4px 0px black;
+    position: relative;
+    top: -3px;
+    left: 2px;
+    transition: all .1s ease-in-out;
+    cursor: url(http://files.simey.me/wow-cursor.png), auto;
 }
 
 .title{

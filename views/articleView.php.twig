@@ -16,14 +16,13 @@
 {% block content %}
     <div class="articles-view">
     {% for i in articles %}
-        <div>
-            <div><a class="lienvisible"
+            <div>
+                <a class="lienvisible"
                     href='?action=profilview&profil={{ i['user_id'] }}crWmp%0pdsaDcleRasmce{{ i['title'] }}lslkdnvopvFSAM£'>
                     {{ i['user_name'] }}</a></div>
             <div>{{ i['title'] }}</div>
             <div>{{ i['text'] }}</div>
             <img src="{{ i['image'] }}">
-        </div>
         </div>
         <div class="content"></div>
     {% endfor %}

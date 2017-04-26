@@ -12,12 +12,13 @@
 <body>
 {% block content %}
     <div class="home-view">
+
         {% for i in articles %}
-            <br>
-            <br>
-            <a class="lienvisible" href='?action=articleview&article={{ i['title'] }}'>
-                {{ i['title'] }}</a>
-            <img src="{{ i['image'] }}">
+            <div class="article">
+                <a class="lienvisible" href='?action=articleview&article={{ i['title'] }}'>
+                    {{ i['title'] }}</a>
+                <img src="{{ i['image'] }}">
+            </div>
         {% endfor %}
     </div>
     <div class="content"></div>
