@@ -44,4 +44,9 @@ class UserController extends BaseController
         echo "</div>";
         echo $this->renderView('edit.php.twig', ['error' => $error]);
     }
+
+    public function postAction()
+    {
+
+    }
 }
