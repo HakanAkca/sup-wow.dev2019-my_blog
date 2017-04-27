@@ -17,12 +17,14 @@
     <div class="articles-view">
     {% for i in articles %}
 
-        <a class="lienvisible"
-           href='?action=profilview&profil={{ i['user_id'] }}crWmp%0pdsaDcleRasmce{{ i['title'] }}lslkdnvopvFSAM£'>
-            {{ i['user_name'] }}</a>
+
         <div class="article-title-bloc">
             <div class="article-title">{{ i['title'] }}</div>
+            Posté par : <a class="lienvisible"
+               href='?action=profilview&profil={{ i['user_id'] }}crWmp%0pdsaDcleRasmce{{ i['title'] }}lslkdnvopvFSAM£'>
+                {{ i['user_name'] }}</a>
             <div class="article-bloc">
+
                 <div class="article-text">{{ i['text'] }}</div>
                 <img class="article-image" src="{{ i['image'] }}">
             </div>
