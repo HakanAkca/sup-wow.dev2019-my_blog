@@ -42,6 +42,10 @@ class DefaultController extends BaseController
             echo "<li><a href='?action=home'>Home</a></li>";
             echo "<li><a href='?action=logout'>logout</a></li>";
             echo "</div>";
+            echo "<form action='?action=?action=profilview&profil={{ i['user_id'] }}crWmp%0pdsaDcleRasmce{{ i['title'] }}lslkdnvopvFSAM£' method='POST' name='register-form'>";
+            echo "<input type='text' name='commentaire' class='commentaire'>";
+            echo "<input type='submit' class='submit' value='Poster'>";
+            echo "</form>";
             echo $this->renderView('articleView.php.twig', ['articles' => $articles]);
         } else {
             $manager = UserManager::getInstance();

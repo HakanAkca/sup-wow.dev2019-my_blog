@@ -39,30 +39,38 @@ body {
 }
 .article{
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     height: auto;
     width: 90%;
     margin-left: 5%;
-    margin-bottom: 20px;
-    border-bottom-style: solid;
-    border-bottom-width: 3px;
-    border-bottom-color: green;
+    margin-bottom: 30px;
+    border-style: solid;
+    border-color: green;
 }
 
 img{
-    width: 300px;
-    height: 200px;
+    width: 50%;
+    height: 30%;
     margin-bottom: 10px;
 }
 
-.lienvisible{
+.article .lienvisible{
     vertical-align: middle;
+    font-size: 170%;
+    width: 60%;
+    border-bottom-style: solid;
+    border-bottom-width: 4px;
+    border-bottom-color: green ;
 }
 
 a{
-    width: auto;
+    color: white;
+    text-decoration: none;
+    height: 30px;
+}
+
+a:hover{
+    color: green;
 }
 
 
@@ -98,4 +106,12 @@ a{
 }
 ::-webkit-scrollbar-corner {
     background: transparent;
+}
+
+
+@media screen and (min-width: 1025px){
+    img{
+        width: 40%;
+        height: 40%;
+    }
 }
