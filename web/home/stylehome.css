@@ -12,7 +12,7 @@ body {
     color: white;
     opacity: 1;
     width: 80%;
-    height: 600px;
+    height: 580px;
     margin: auto auto auto auto;
     vertical-align: middle;
     overflow-y: scroll;
@@ -43,7 +43,8 @@ body {
     border-top: 1px solid #614936;
     border-top-left-radius: 5px;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
     height: auto;
     width: 90%;
     margin-left: 5%;
@@ -51,18 +52,15 @@ body {
 }
 
 img{
-    width: 50%;
-    height: 30%;
-    margin-bottom: 10px;
+    width: 60%;
+    height: 130px;
+    margin-top: 20px;
 }
 
 .article .lienvisible{
     vertical-align: middle;
-    font-size: 170%;
-    width: 60%;
-    border-bottom-style: solid;
-    border-bottom-width: 4px;
-    border-bottom-color: #a7df35 ;
+    font-size: 130%;
+    text-align: center;
 }
 
 a{
@@ -111,9 +109,47 @@ a:hover{
 }
 
 
-@media screen and (min-width: 1025px){
+@media screen and (min-width: 641px) and (max-width: 1024px) {
+    .article .lienvisible{
+        border-bottom-style: solid;
+        border-bottom-width: 4px;
+        border-bottom-color: #a7df35 ;
+        font-size: 170%;
+        width: 60%;
+    }
+
+    .article{
+        flex-direction: row;
+        justify-content: space-around;
+        width: 90%;
+        align-items: inherit;
+    }
     img{
         width: 40%;
         height: 40%;
+        margin-top: 0px;
+    }
+}
+
+@media screen and (min-width: 1025px){
+    .article .lienvisible{
+        border-bottom-style: solid;
+        border-bottom-width: 4px;
+        border-bottom-color: #a7df35 ;
+        font-size: 170%;
+        width: 60%;
+    }
+
+    .article{
+        flex-direction: row;
+        justify-content: space-around;
+        width: 90%;
+        align-items: inherit;
+    }
+
+    img{
+        width: 40%;
+        height: 50%;
+        margin-top: 0px;
     }
 }

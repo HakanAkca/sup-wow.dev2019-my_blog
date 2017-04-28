@@ -29,19 +29,20 @@
                 <img class="article-image" src="{{ i['image'] }}">
             </div>
         </div>
-        </div>
+
         {% if name is defined %}
             <form name="com-post" id="com-post" method="post" action="?action=articleview&article={{ i['title'] }}">
                 <input type="text" name="commentaire">
                 <input type="submit" value="envoyer commentaire">
             </form>
         {% endif %}
-        <div class="content"></div>
 
         <p id="error-block"></p>
         <p id="success-block"></p>
+        </div>
     {% endfor %}
 
+    <div class="content"></div>
 {% endblock %}
 
 </body>

@@ -22,9 +22,12 @@
 }
 
 .header a{
-    color: white;
-    text-decoration: none;
-    height: 30px;
+      color: white;
+      text-decoration: none;
+      height: 30px;
+  }
+li{
+    text-align: center;
 }
 
 .header a:hover{
