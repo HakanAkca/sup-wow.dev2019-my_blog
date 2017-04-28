@@ -14,7 +14,7 @@ class DefaultController extends BaseController
             $articles = $manager->showArticle();
 
 
-            echo  "<div class='header'>";
+            echo "<div class='header'>";
             echo "<li><a href='?action=edit'>Edition du profil</a></li>";
             echo "<li><a href='?action=article'>Ajouter un article</a></li>";
             echo "<li><a href='?action=logout'>Se deconnecter</a></li>";
@@ -39,12 +39,16 @@ class DefaultController extends BaseController
             $manager = UserManager::getInstance();
             $articles = $manager->showSpecificArticle();
             $user = $manager->getUserById($_SESSION['user_id']);
+            $comShow = $manager->showCom();
 
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $manager->postCom($_POST);
+            }
             echo "<div class='header'>";
             echo "<li><a href='?action=home'>Home</a></li>";
             echo "<li><a href='?action=logout'>logout</a></li>";
             echo "</div>";
-            echo $this->renderView('articleView.php.twig', ['articles' => $articles, 'name' => $user['username']]);
+            echo $this->renderView('articleView.php.twig', ['articles' => $articles, 'name' => $user['username'], 'comShow' => $comShow]);
         } else {
             $manager = UserManager::getInstance();
             $articles = $manager->showSpecificArticle();
@@ -59,8 +63,7 @@ class DefaultController extends BaseController
 
     public function profilViewAction()
     {
-        if (!empty($_SESSION['user_id']))
-        {
+        if (!empty($_SESSION['user_id'])) {
             $manager = UserManager::getInstance();
             $profil = $manager->showAllProfil($_GET);
 

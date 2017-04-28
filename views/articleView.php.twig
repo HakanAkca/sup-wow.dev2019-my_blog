@@ -9,15 +9,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <script src="web/articleView.js"></script>
-    <script src="web/commentaire.js"></script>
 </head>
 <body>
 
 {% block content %}
     <div class="articles-view">
     {% for i in articles %}
-
-
         <div class="article-title-bloc">
             <div class="article-title">{{ i['title'] }}</div>
             Posté par : <a class="lienvisible"
@@ -32,7 +29,7 @@
 
         {% if name is defined %}
             <form name="com-post" id="com-post" method="post" action="?action=articleview&article={{ i['title'] }}">
-                <input type="text" name="commentaire">
+                <input type="text" name="send-com">
                 <input type="submit" value="envoyer commentaire">
             </form>
         {% endif %}
