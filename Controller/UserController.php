@@ -26,13 +26,30 @@ class UserController extends BaseController
         echo $this->renderView('article.php.twig', ['error' => $error]);
     }
 
-    public function editAction()
+    public function profilAction()
+    {
+        if (!empty($_SESSION['user_id'])) {
+            $manager = UserManager::getInstance();
+            $connectedProfil = $manager->showProfil();
+
+            echo '<div class="header">';
+            echo "<li><a href='?action=home'>Home</a></li>";
+            echo "<li><a href='?action=profil'>profil</a></li>";
+            echo "<li><a href='?action=logout'>logout</a></li>";
+            echo '</div>';
+            echo $this->renderView('profil.php.twig', ['connectedProfil' => $connectedProfil]);
+        } else {
+            $this->redirect('login');
+        }
+    }
+
+    /*public function editAction()
     {
         $error = '';
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $manager = UserManager::getInstance();
-            if ($manager->checkPassword($_POST)) {
-                $manager->changePassword($_POST);
+            if ($manager->($_POST)) {
+                $manager->($_POST);
                 $this->redirect('edit');
             } else
                 $this->redirect('login');
@@ -43,17 +60,6 @@ class UserController extends BaseController
         echo "<li><a href='?action=logout'>Se déconnecter</a></li>";
         echo "</div>";
         echo $this->renderView('edit.php.twig', ['error' => $error]);
-    }
+    }*/
 
-    public function postAction()
-    {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $manager = UserManager::getInstance();
-            if ($manager->actionPost($_POST)) {
-                $manager->postCom($_POST);
-                $this->redirect('article');
-            } else
-                $this->redirect('login');
-        }
-    }
 }
