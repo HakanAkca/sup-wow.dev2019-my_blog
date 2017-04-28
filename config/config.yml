@@ -15,4 +15,4 @@ db_config:
     name: 'sup-wow'
     host: 'localhost'
     user: 'root'
-    pass: 'root'
+    pass: ''

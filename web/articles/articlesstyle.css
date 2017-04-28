@@ -1,3 +1,7 @@
+body{
+    overflow-y: scroll;
+}
+
 .articles-view{
     color: white;
     opacity: 1;
@@ -6,7 +10,6 @@
     justify-content: space-around;
     align-items: center;
     width: 80%;
-    height: 90%;
     margin: auto auto auto auto;
     vertical-align: middle;
 }
@@ -40,6 +43,7 @@ img{
 }
 
 .article-title-bloc{
+    margin-top: 20px;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -57,7 +61,6 @@ img{
 
 .article-text{
     height: 350px;
-    width: 550px;
     overflow-y: scroll;
 }
 
@@ -68,6 +71,10 @@ img{
 
     .article-title {
         font-size: 25px;
+    }
+
+    .article-text{
+        width: 550px;
     }
 
     img{
@@ -81,6 +88,9 @@ img{
         flex-direction: row;
     }
 
+    .article-text{
+        width: 550px;
+    }
 
     .article-title {
         font-size: 30px;
