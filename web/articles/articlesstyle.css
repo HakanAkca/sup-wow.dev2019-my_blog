@@ -15,8 +15,7 @@ body{
 }
 
 img{
-    width: 80%;
-    height: 30%;
+display: none;
 }
 
 .lienvisible{
@@ -60,7 +59,7 @@ img{
 }
 
 .article-text{
-    height: 350px;
+    height: 450px;
     overflow-y: scroll;
 }
 
@@ -78,6 +77,7 @@ img{
     }
 
     img{
+        display: block;
         width: 30%;
         height: 50%;
     }
@@ -97,6 +97,7 @@ img{
     }
 
     img{
+        display: block;
         width: 30%;
         height: 50%;
     }

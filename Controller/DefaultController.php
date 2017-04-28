@@ -15,20 +15,24 @@ class DefaultController extends BaseController
 
 
             echo "<div class='header'>";
+            echo "<ul>";
             echo "<li><a href='?action=edit'>Edition du profil</a></li>";
             echo "<li><a href='?action=article'>Ajouter un article</a></li>";
             echo "<li><a href='?action=logout'>Se deconnecter</a></li>";
+            echo "</ul>";
             echo "</div>";
             echo $this->renderView('home.php.twig',
                 ['name' => $user['username'], 'articles' => $articles]);
         } else {
+            echo $this->renderView('home.php.twig', ['name' => $user = 'Visiteur', 'articles' => $articles]);
             $manager = UserManager::getInstance();
             $articles = $manager->showArticle();
             echo "<div class='header'>";
+            echo "<ul>";
             echo "<li><a href='?action=register'>Register</a></li>";
             echo "<li><a href='?action=login'>Login</a></li>";
+            echo "</ul>";
             echo "</div>";
-            echo $this->renderView('home.php.twig', ['name' => $user = 'Visiteur', 'articles' => $articles]);
         }
 
     }
@@ -45,8 +49,10 @@ class DefaultController extends BaseController
                 $manager->postCom($_POST);
             }
             echo "<div class='header'>";
+            echo "<ul>";
             echo "<li><a href='?action=home'>Home</a></li>";
             echo "<li><a href='?action=logout'>logout</a></li>";
+            echo "</ul>";
             echo "</div>";
             echo $this->renderView('articleView.php.twig', ['articles' => $articles, 'name' => $user['username'], 'comShow' => $comShow]);
         } else {
@@ -54,8 +60,10 @@ class DefaultController extends BaseController
             $articles = $manager->showSpecificArticle();
 
             echo '<div class="header">';
+            echo "<ul>";
             echo "<li><a href='?action=register'>Register</a></li>";
             echo "<li><a href='?action=login'>Login</a></li>";
+            echo "</ul>";
             echo '</div>';
             echo $this->renderView('articleView.php.twig', ['articles' => $articles]);
         }
@@ -68,8 +76,10 @@ class DefaultController extends BaseController
             $profil = $manager->showAllProfil($_GET);
 
             echo '<div class="header">';
+            echo "<ul>";
             echo "<li><a href='?action=home'>Home</a></li>";
             echo "<li><a href='?action=logout'>logout</a></li>";
+            echo "</ul>";
             echo '</div>';
             echo $this->renderView('profilView.php.twig', ['profils' => $profil]);
         } else {
@@ -77,8 +87,10 @@ class DefaultController extends BaseController
             $profil = $manager->showAllProfil($_GET);
 
             echo '<div class="header">';
+            echo "<ul>";
             echo "<li><a href='?action=register'>Register</a></li>";
             echo "<li><a href='?action=login'>Login</a></li>";
+            echo "</ul>";
             echo '</div>';
             echo $this->renderView('profilView.php.twig', ['profils' => $profil]);
         }

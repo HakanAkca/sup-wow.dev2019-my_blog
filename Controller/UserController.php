@@ -19,9 +19,11 @@ class UserController extends BaseController
                 $this->redirect('login');
         }
         echo "<div class='header'>";
+        echo "<ul>";
         echo "<li><a href='?action=home'>Home</a></li>";
         echo "<li><a href='?action=edit'>Profil</a></li>";
         echo "<li><a href='?action=logout'>Se déconnecter</a></li>";
+        echo "</ul>";
         echo "</div>";
         echo $this->renderView('article.php.twig', ['error' => $error]);
     }
@@ -33,9 +35,11 @@ class UserController extends BaseController
             $connectedProfil = $manager->showProfil();
 
             echo '<div class="header">';
+            echo "<ul>";
             echo "<li><a href='?action=home'>Home</a></li>";
             echo "<li><a href='?action=profil'>profil</a></li>";
             echo "<li><a href='?action=logout'>logout</a></li>";
+            echo "</ul>";
             echo '</div>';
             echo $this->renderView('profil.php.twig', ['connectedProfil' => $connectedProfil]);
         } else {

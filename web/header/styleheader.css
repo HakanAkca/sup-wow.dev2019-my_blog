@@ -26,8 +26,11 @@
       text-decoration: none;
       height: 30px;
   }
-li{
-    text-align: center;
+ul{
+    width: 90%;
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
 }
 
 .header a:hover{
