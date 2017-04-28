@@ -38,14 +38,16 @@ body {
 
 }
 .article{
+    background-image: -webkit-gradient(linear, left bottom, left top, from(rgb(49, 39, 29)), to(rgb(97, 67, 47)));
+    background-color: rgba(97, 67, 47, 0.49);
+    border-top: 1px solid #614936;
+    border-top-left-radius: 5px;
     display: flex;
     justify-content: space-between;
     height: auto;
     width: 90%;
     margin-left: 5%;
     margin-bottom: 30px;
-    border-style: solid;
-    border-color: green;
 }
 
 img{
@@ -60,7 +62,7 @@ img{
     width: 60%;
     border-bottom-style: solid;
     border-bottom-width: 4px;
-    border-bottom-color: green ;
+    border-bottom-color: #a7df35 ;
 }
 
 a{

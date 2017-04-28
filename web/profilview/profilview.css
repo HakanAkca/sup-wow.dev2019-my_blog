@@ -1,0 +1,22 @@
+.profilview-view{
+    color: white;
+    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+    height: 90%;
+    margin: auto auto auto auto;
+    vertical-align: middle;
+}
+
+.profil{
+    height: 300px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 200px;
+}
