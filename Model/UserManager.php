@@ -184,8 +184,7 @@ class UserManager
 
     public function showArticle()
     {
-        $show = $this->DBManager->findAllSecure("SELECT * FROM com");
-        return $show;
+        return $this->DBManager->findAllSecure("SELECT * FROM com");
     }
 
     public function showSpecificArticle()
@@ -196,14 +195,13 @@ class UserManager
 
     public function showAllProfil($id)
     {
-        $show = $this->DBManager->findOneSecure("SELECT users.id, users.username, users.email , users.firstname, users.lastname, users.city, com.user_id 
+        return $this->DBManager->findOneSecure("SELECT users.id, users.username, users.email , users.firstname, users.lastname, users.city, com.user_id 
                                                  FROM users 
                                                  INNER JOIN com ON users.id = com.user_id WHERE user_id = :id", ['id' => $id['profil']]);
-        return $show;
     }
 
 
-    public function checkPassword($data)
+    /*public function checkPassword($data)
     {
         header('content-type: application/json');
         header('Access-Control-Allow-Origin: *');
@@ -234,14 +232,17 @@ class UserManager
             exit(0);
         }
         return $isFormGood;
-    }
+    }*/
 
-    public function changePassword($data)
+    public function avatarPost($data)
     {
+        $user['avatar'] = 'uploads/' . $_SESSION['username'] . '/' . $_FILES['avatar-file']['name'];
+        $this->DBManager->insert('users', $user);
+        move_uploaded_file($_FILES['uploads_file']['tmp_name'], 'uploads/' . $_SESSION['username'] . '/' . $_FILES['uploads_file']['name']);
 
     }
 
-    public function actionPost($data)
+    /*public function actionPost($data)
     {
         header('content-type: application/json');
         header('Access-Control-Allow-Origin: *');
@@ -262,13 +263,22 @@ class UserManager
             exit(0);
         }
         return $isFormGood;
-    }
+    }*/
 
     public function postCom($data)
     {
-        $user['com'] = $data['commentaire'];
-        $user['id_com'] = $_SESSION['username'];
-        var_dump($user);
+        $user['com'] = $data['send-com'];
+        $user['user_com'] = $_SESSION['username'];
         $this->DBManager->insert('commentary', $user);
+    }
+
+    public function showCom()
+    {
+        return $this->DBManager->findAllSecure("SELECT * FROM commentary");
+    }
+
+    public function showProfil()
+    {
+        return $this->DBManager->findAllSecure("SELECT * FROM users WHERE id = " . $_SESSION['user_id']);
     }
 }
