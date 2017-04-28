@@ -47,6 +47,13 @@ class UserController extends BaseController
 
     public function postAction()
     {
-
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $manager = UserManager::getInstance();
+            if ($manager->actionPost($_POST)) {
+                $manager->postCom($_POST);
+                $this->redirect('article');
+            } else
+                $this->redirect('login');
+        }
     }
 }

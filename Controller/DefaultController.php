@@ -38,18 +38,17 @@ class DefaultController extends BaseController
         if (!empty($_SESSION['user_id'])) {
             $manager = UserManager::getInstance();
             $articles = $manager->showSpecificArticle();
+            $user = $manager->getUserById($_SESSION['user_id']);
+
             echo "<div class='header'>";
             echo "<li><a href='?action=home'>Home</a></li>";
             echo "<li><a href='?action=logout'>logout</a></li>";
             echo "</div>";
-            echo "<form action='?action=?action=profilview&profil={{ i['user_id'] }}crWmp%0pdsaDcleRasmce{{ i['title'] }}lslkdnvopvFSAM£' method='POST' name='register-form'>";
-            echo "<input type='text' name='commentaire' class='commentaire'>";
-            echo "<input type='submit' class='submit' value='Poster'>";
-            echo "</form>";
-            echo $this->renderView('articleView.php.twig', ['articles' => $articles]);
+            echo $this->renderView('articleView.php.twig', ['articles' => $articles, 'name' => $user['username']]);
         } else {
             $manager = UserManager::getInstance();
             $articles = $manager->showSpecificArticle();
+
             echo '<div class="header">';
             echo "<li><a href='?action=register'>Register</a></li>";
             echo "<li><a href='?action=login'>Login</a></li>";

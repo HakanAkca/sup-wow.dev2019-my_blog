@@ -240,4 +240,35 @@ class UserManager
     {
 
     }
+
+    public function actionPost($data)
+    {
+        header('content-type: application/json');
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Methods: GET, POST');
+        $isFormGood = true;
+        $errors = array();
+
+        if (!isset($data['commentaire']) || strlen($data['commentaire']) < 4) {
+            $errors['dese'] = 'LOL';
+            $isFormGood = false;
+        }
+
+        if ($isFormGood) {
+            echo(json_encode(array('success' => true, 'user' => $_POST)));
+        } else {
+            http_response_code(400);
+            echo(json_encode(array('success' => false, 'errors' => $errors)));
+            exit(0);
+        }
+        return $isFormGood;
+    }
+
+    public function postCom($data)
+    {
+        $user['com'] = $data['commentaire'];
+        $user['id_com'] = $_SESSION['username'];
+        var_dump($user);
+        $this->DBManager->insert('commentary', $user);
+    }
 }
