@@ -17,6 +17,7 @@ class DefaultController extends BaseController
             echo "<div class='header'>";
             echo "<ul>";
             echo "<li><a href='?action=edit'>Edition du profil</a></li>";
+            echo "<li><a href='?action=profil'>Profil</a></li>";
             echo "<li><a href='?action=article'>Ajouter un article</a></li>";
             echo "<li><a href='?action=logout'>Se deconnecter</a></li>";
             echo "</ul>";
@@ -24,7 +25,6 @@ class DefaultController extends BaseController
             echo $this->renderView('home.php.twig',
                 ['name' => $user['username'], 'articles' => $articles]);
         } else {
-            echo $this->renderView('home.php.twig', ['name' => $user = 'Visiteur', 'articles' => $articles]);
             $manager = UserManager::getInstance();
             $articles = $manager->showArticle();
             echo "<div class='header'>";
@@ -33,6 +33,7 @@ class DefaultController extends BaseController
             echo "<li><a href='?action=login'>Login</a></li>";
             echo "</ul>";
             echo "</div>";
+            echo $this->renderView('home.php.twig', ['name' => $user = 'Visiteur', 'articles' => $articles]);
         }
 
     }
@@ -43,11 +44,15 @@ class DefaultController extends BaseController
             $manager = UserManager::getInstance();
             $articles = $manager->showSpecificArticle();
             $user = $manager->getUserById($_SESSION['user_id']);
-            $comShow = $manager->showCom();
+            //$comShow = $manager->showCom();
 
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                $manager->postCom($_POST);
+                if ($manager->checkCom($_POST))
+                {
+                    $manager->postCom($_POST);
+                }
             }
+
             echo "<div class='header'>";
             echo "<ul>";
             echo "<li><a href='?action=home'>Home</a></li>";

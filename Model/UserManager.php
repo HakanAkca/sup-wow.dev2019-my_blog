@@ -141,30 +141,21 @@ class UserManager
         $errors = array();
         $result = array();
 
-        if (!isset($data['title']) || strlen($data['title']) < 1) {
+        if (!isset($data['title'])) {
             $errors['titre'] = 'Titre trop court ! Merci de saissir 20 caractères minimum';
             $isFormGood = false;
         }
 
-        if (!isset($data['commentary']) || strlen($data['commentary']) < 1) {
+        if (!isset($data['commentary'])) {
             $errors['text'] = 'Article trop court minimum 500 caractères';
             $isFormGood = false;
         }
 
-        /*if (isset($_FILES['uploads_file']['name']) && !empty($_FILES)){
-            $data['image'] = $_FILES['uploads_file']['name'];
-            $data['image_tmp_name'] = $_FILES['uploads_file']['tmp_name'];
-            $result['data'] = $data;
-        }
-        else{
-            $errors['image'] = 'Veillez choisir une image';
-            $isFormGood = false;
-        }*/
-
         if ($isFormGood) {
             echo(json_encode(array('success' => true, 'user' => $_POST)));
         } else {
-            echo(json_encode(array('success' => false, 'error' => $errors)));
+            http_response_code(400);
+            echo(json_encode(array('success' => false, 'errors' => $errors)));
             exit(0);
         }
         $result['isFormGood'] = $isFormGood;
@@ -197,60 +188,16 @@ class UserManager
     {
         return $this->DBManager->findOneSecure("SELECT users.id, users.username, users.email , users.firstname, users.lastname, users.city, com.user_id 
                                                  FROM users 
-                                                 INNER JOIN com ON users.id = com.user_id WHERE user_id = :id", ['id' => $id['profil']]);
+                                                 INNER JOIN com", ['id' => $id['profil']]);
     }
 
 
-    /*public function checkPassword($data)
+    public function checkCom($data)
     {
-        header('content-type: application/json');
-        header('Access-Control-Allow-Origin: *');
-        header('Access-Control-Allow-Methods: GET, POST');
         $isFormGood = true;
         $errors = array();
 
-        if (!isset($data['currentPassword'])) {
-            $errors['titre'] = 'c';
-            $isFormGood = false;
-        }
-
-        if (!isset($data['newPassword'])) {
-            $errors['titre'] = 'a';
-            $isFormGood = false;
-        }
-
-        if (!isset($data['confirmPassword'])) {
-            $errors['titre'] = 'b';
-            $isFormGood = false;
-        }
-
-        if ($isFormGood) {
-            echo(json_encode(array('success' => true, 'user' => $_POST)));
-        } else {
-            http_response_code(400);
-            echo(json_encode(array('success' => false, 'errors' => $errors)));
-            exit(0);
-        }
-        return $isFormGood;
-    }*/
-
-    public function avatarPost($data)
-    {
-        $user['avatar'] = 'uploads/' . $_SESSION['username'] . '/' . $_FILES['avatar-file']['name'];
-        $this->DBManager->insert('users', $user);
-        move_uploaded_file($_FILES['uploads_file']['tmp_name'], 'uploads/' . $_SESSION['username'] . '/' . $_FILES['uploads_file']['name']);
-
-    }
-
-    /*public function actionPost($data)
-    {
-        header('content-type: application/json');
-        header('Access-Control-Allow-Origin: *');
-        header('Access-Control-Allow-Methods: GET, POST');
-        $isFormGood = true;
-        $errors = array();
-
-        if (!isset($data['commentaire']) || strlen($data['commentaire']) < 4) {
+        if (!isset($data['send-com'])) {
             $errors['dese'] = 'LOL';
             $isFormGood = false;
         }
@@ -263,22 +210,54 @@ class UserManager
             exit(0);
         }
         return $isFormGood;
-    }*/
+    }
 
     public function postCom($data)
     {
+
         $user['com'] = $data['send-com'];
-        $user['user_com'] = $_SESSION['username'];
+        $user['user_com'] = $_SESSION['user_id'];
+        $user['article_id'] = $data['id_article'];
         $this->DBManager->insert('commentary', $user);
     }
 
-    public function showCom()
+    /*public function showCom()
     {
-        return $this->DBManager->findAllSecure("SELECT * FROM commentary");
-    }
+        $article_id = $_GET['id_article'];
+        $show = $this->DBManager->findAllSecure("SELECT * FROM commentary WHERE article_id = :article_id", ['article_id' => $article_id]);
+        return $show;
+    }*/
 
     public function showProfil()
     {
         return $this->DBManager->findAllSecure("SELECT * FROM users WHERE id = " . $_SESSION['user_id']);
+    }
+
+    public function editProfil($data)
+    {
+        $isFormGood = true;
+        $errors = array();
+
+        if (!isset($data['change-email']) || !filter_var($data['change-email'], FILTER_VALIDATE_EMAIL)) {
+            $errors['Email'] = 'votre email n\'est pas valide.';
+            $isFormGood = false;
+        }
+
+        if ($isFormGood) {
+            echo(json_encode(array('success' => true, 'user' => $_POST)));
+        } else {
+            http_response_code(400);
+            echo(json_encode(array('success' => false, 'errors' => $errors)));
+            exit(0);
+        }
+        return $isFormGood;
+    }
+
+    public function sendInfos($data)
+    {
+        $new_mail = $data['change-email'];
+       echo $new_mail;
+        return $this->DBManager->findOneSecure("UPDATE users SET email ='" . $new_mail . "' WHERE id='"
+            . $_SESSION['user_id'] . "'");
     }
 }

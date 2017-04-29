@@ -1,8 +1,8 @@
 {% block content %}
-    <script src="web/script.js"></script>
     <link rel="stylesheet" href="web/register/registerstyle.css">
     <link rel="stylesheet" href="web/header/styleheader.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="web/register.js"></script>
 
     <video class="video" loop muted autoplay>
         <source src="web/login/background.mp4" type="video/mp4">
@@ -17,6 +17,9 @@
             Login : <input type="text" name="username" class="username"><br><br>
             Email : <input type="text" name="email" class="email"><br><br>
             Password : <input type="password" name="password" class="password"><br><br>
+            Prénom : <input type="text" name="firstname" class="firstname"><br><br>
+            Nom : <input type="text" name="lastname" class="lastname"><br><br>
+            Ville : <input type="text" name="city" class="city"><br><br>
             <input type="submit" class="submit" value="S'enregistrer !">
         </form>
         <a href="?action=login" class="register">Tu as déjà un compte ?</a>

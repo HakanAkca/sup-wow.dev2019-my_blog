@@ -11,8 +11,6 @@ window.onload = function(){
         params += '&firstname='+this.elements['firstname'].value;
         params += '&lastname='+this.elements['lastname'].value;
         params += '&city='+this.elements['city'].value;
-        console.log(params);
-
         var errorMessage = '';
 
         var http = new XMLHttpRequest();
@@ -23,7 +21,10 @@ window.onload = function(){
 
         http.onload = function() {
             if(http.readyState == 4 && http.status == 200) {
-                successBlock.innerHTML = 'OK BIENVENUE';
+                successBlock.innerHTML = 'Inscription réussi vous aller être rediriger';
+                window.setTimeout(function(){
+                    window.location.href = 'http:/sup-wow.dev2019-my_blog/?action=login'
+                }, 5000);
             } else{
                 var errors = JSON.parse(http.responseText);
                 for(var error in errors['errors']){

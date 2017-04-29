@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <script src="web/articleView.js"></script>
+    <script src="web/com.js"></script>
 </head>
 <body>
 
@@ -18,7 +19,7 @@
         <div class="article-title-bloc">
             <div class="article-title">{{ i['title'] }}</div>
             Posté par : <a class="lienvisible"
-               href='?action=profilview&profil={{ i['user_id'] }}crWmp%0pdsaDcleRasmce{{ i['title'] }}lslkdnvopvFSAM£'>
+               href='?action=profilview&profil={{ i['user_id'] }}{{ i['title'] }}'>
                 {{ i['user_name'] }}</a>
             <div class="article-bloc">
 
@@ -28,17 +29,22 @@
         </div>
 
         {% if name is defined %}
-            <form name="com-post" id="com-post" method="post" action="?action=articleview&article={{ i['title'] }}">
+            <form name="com-post" id="com-post" method="post" action='?action=articleview&article={{ i['title'] }}'>
                 <input type="text" name="send-com">
+                <input type="text" name="id_article" value="{{ i['id'] }}">
                 <input type="submit" value="envoyer commentaire">
             </form>
+            <p id="error-block"></p>
+            <p id="success-block"></p>
         {% endif %}
-
-        <p id="error-block"></p>
-        <p id="success-block"></p>
         </div>
     {% endfor %}
-
+    {% for i in comShow %}
+        <div>
+            <div>{{ i['com'] }}</div>
+            <div>{{ i['user_com'] }}</div>
+        </div>
+    {% endfor %}
     <div class="content"></div>
 {% endblock %}
 

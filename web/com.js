@@ -2,24 +2,22 @@ window.onload = function(){
 
     var errorBlock = document.querySelector('#error-block');
     var successBlock = document.querySelector('#success-block');
-    document.forms['password-form'].onsubmit = function(){
+    document.forms['com-post'].onsubmit = function(){
         successBlock.innerHTML = '';
         errorBlock.innerHTML = '';
-        var params = 'currentPassword='+this.elements['currentPassword'].value;
-        params += '&newPassword='+this.elements['newPassword'].value;
-        params += '&confirmPassword='+this.elements['confirmPassword'].value;
+        var params = 'Com='+this.elements['send-com'].value;
 
         var errorMessage = '';
 
         var http = new XMLHttpRequest();
-        http.open("POST", "?action=edit", true);
-        var url = "?action=edit";
+        http.open("POST", "?action=articleview&", true);
+        var url = "?action=articleview&";
         http.open("POST", url, true);
         http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
         http.onload = function() {
             if(http.readyState == 4 && http.status == 200) {
-                successBlock.innerHTML = 'OK BIENVENUE';
+                successBlock.innerHTML = 'Votre commentaire a était poster avec succès';
             } else{
                 var errors = JSON.parse(http.responseText);
                 for(var error in errors['errors']){
