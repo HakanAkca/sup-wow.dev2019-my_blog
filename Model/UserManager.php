@@ -36,9 +36,6 @@ class UserManager
 
     public function userCheckRegister($data)
     {
-        header('content-type: application/json');
-        header('Access-Control-Allow-Origin: *');
-        header('Access-Control-Allow-Methods: GET, POST');
         $isFormGood = true;
         $errors = array();
 
@@ -101,9 +98,6 @@ class UserManager
 
     public function userCheckLogin($data)
     {
-        header('content-type: application/json');
-        header('Access-Control-Allow-Origin: *');
-        header('Access-Control-Allow-Methods: GET, POST');
         $isFormGood = true;
         $errors = array();
 
@@ -133,33 +127,6 @@ class UserManager
         $_SESSION['user_id'] = $data['id'];
         $_SESSION['username'] = $data['username'];
         return true;
-    }
-
-    public function userArticle($data)
-    {
-        $isFormGood = true;
-        $errors = array();
-        $result = array();
-
-        if (!isset($data['title'])) {
-            $errors['titre'] = 'Titre trop court ! Merci de saissir 20 caractères minimum';
-            $isFormGood = false;
-        }
-
-        if (!isset($data['commentary'])) {
-            $errors['text'] = 'Article trop court minimum 500 caractères';
-            $isFormGood = false;
-        }
-
-        if ($isFormGood) {
-            echo(json_encode(array('success' => true, 'user' => $_POST)));
-        } else {
-            http_response_code(400);
-            echo(json_encode(array('success' => false, 'errors' => $errors)));
-            exit(0);
-        }
-        $result['isFormGood'] = $isFormGood;
-        return $result;
     }
 
     public function userSendArticle($data)
@@ -192,72 +159,19 @@ class UserManager
     }
 
 
-    public function checkCom($data)
-    {
-        $isFormGood = true;
-        $errors = array();
-
-        if (!isset($data['send-com'])) {
-            $errors['dese'] = 'LOL';
-            $isFormGood = false;
-        }
-
-        if ($isFormGood) {
-            echo(json_encode(array('success' => true, 'user' => $_POST)));
-        } else {
-            http_response_code(400);
-            echo(json_encode(array('success' => false, 'errors' => $errors)));
-            exit(0);
-        }
-        return $isFormGood;
-    }
-
-    public function postCom($data)
-    {
-
-        $user['com'] = $data['send-com'];
-        $user['user_com'] = $_SESSION['user_id'];
-        $user['article_id'] = $data['id_article'];
-        $this->DBManager->insert('commentary', $user);
-    }
-
-    /*public function showCom()
-    {
-        $article_id = $_GET['id_article'];
-        $show = $this->DBManager->findAllSecure("SELECT * FROM commentary WHERE article_id = :article_id", ['article_id' => $article_id]);
-        return $show;
-    }*/
-
     public function showProfil()
     {
         return $this->DBManager->findAllSecure("SELECT * FROM users WHERE id = " . $_SESSION['user_id']);
     }
 
-    public function editProfil($data)
-    {
-        $isFormGood = true;
-        $errors = array();
-
-        if (!isset($data['change-email']) || !filter_var($data['change-email'], FILTER_VALIDATE_EMAIL)) {
-            $errors['Email'] = 'votre email n\'est pas valide.';
-            $isFormGood = false;
-        }
-
-        if ($isFormGood) {
-            echo(json_encode(array('success' => true, 'user' => $_POST)));
-        } else {
-            http_response_code(400);
-            echo(json_encode(array('success' => false, 'errors' => $errors)));
-            exit(0);
-        }
-        return $isFormGood;
-    }
-
     public function sendInfos($data)
     {
         $new_mail = $data['change-email'];
-       echo $new_mail;
-        return $this->DBManager->findOneSecure("UPDATE users SET email ='" . $new_mail . "' WHERE id='"
+        $new_firstname = $data['change-prenom'];
+        $new_lastname = $data['change-nom'];
+        $new_city = $data['change-ville'];
+        return $this->DBManager->findOneSecure("UPDATE users SET email='$new_mail', firstname='$new_firstname'
+                                                , lastname='$new_lastname', city='$new_city' WHERE id='"
             . $_SESSION['user_id'] . "'");
     }
 }

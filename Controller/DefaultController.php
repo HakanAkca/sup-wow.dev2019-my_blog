@@ -100,13 +100,4 @@ class DefaultController extends BaseController
             echo $this->renderView('profilView.php.twig', ['profils' => $profil]);
         }
     }
-
-
-    /*public function aboutAction()
-    {
-        if (!empty($_SESSION['user_id']))
-            echo $this->renderView('about.html.twig');
-        else
-            $this->redirect('login');
-    }*/
 }

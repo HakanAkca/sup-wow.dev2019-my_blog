@@ -12,7 +12,7 @@ class UserController extends BaseController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $manager = UserManager::getInstance();
 
-            if ($manager->userArticle($_POST)) {
+            if ($_POST) {
                 $manager->userSendArticle($_POST);
                 $this->redirect('article');
             } else
@@ -52,7 +52,8 @@ class UserController extends BaseController
         $error = '';
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $manager = UserManager::getInstance();
-            if ($manager->editProfil($_POST)) {
+            if ($_POST)
+            {
                 $manager->sendInfos($_POST);
                 $this->redirect('edit');
             }
@@ -60,7 +61,7 @@ class UserController extends BaseController
 
         echo "<div class='header'>";
         echo "<li><a href='?action=home'>Home</a></li>";
-        echo "<li><a href='?action=e'>Profil</a></li>";
+        echo "<li><a href='?action=profil'>Profil</a></li>";
         echo "<li><a href='?action=logout'>Se déconnecter</a></li>";
         echo "</div>";
         echo $this->renderView('edit.php.twig', ['error' => $error]);

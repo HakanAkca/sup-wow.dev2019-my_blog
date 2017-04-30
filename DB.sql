@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost
--- Généré le :  Mar 25 Avril 2017 à 16:27
+-- Généré le :  Dim 30 Avril 2017 à 15:57
 -- Version du serveur :  5.6.35
 -- Version de PHP :  7.1.1
 
@@ -25,19 +25,9 @@ CREATE TABLE `com` (
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `text` text COLLATE utf8_unicode_ci NOT NULL,
   `image` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `user_id` int(11) NOT NULL
+  `user_id` int(11) NOT NULL,
+  `user_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=COMPACT;
-
---
--- Contenu de la table `com`
---
-
-INSERT INTO `com` (`id`, `title`, `text`, `image`, `user_id`) VALUES
-(78, 'sdfjsqdnkfnjk', 'qskfnkqsdnfksnjdf', 'uploads/admin/img.png', 27),
-(79, 'sdfnqsdfn', 'qskjdnfkqsdnfknqsdf', 'uploads/admin2/img2.jpg', 28),
-(80, 'hakanhakanhkan', 'jkdskfbqsdfjlqsdljfqsdf', 'uploads/admin2/img3.jpg', 28),
-(81, 'nike bien ta mere', 'nike bien ta mere', 'uploads/admin/img.png', 27),
-(82, 'HAKAN', 'HAKAN', 'uploads/admin/img3.jpg', 27);
 
 -- --------------------------------------------------------
 
@@ -48,7 +38,8 @@ INSERT INTO `com` (`id`, `title`, `text`, `image`, `user_id`) VALUES
 CREATE TABLE `commentary` (
   `id` int(11) NOT NULL,
   `com` text NOT NULL,
-  `id_com` int(11) NOT NULL
+  `user_com` int(11) NOT NULL,
+  `article_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -72,9 +63,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `firstname`, `lastname`, `city`) VALUES
-(27, 'admin', 'hakan.akca@supinternet.fr', '$2y$10$c2FsdHlzYWx0eXNhbHR5cuFYLWqyckAGswm2.X4Qs/DrZlN4kmx/a', 'hakan', 'akca', 'paris'),
-(28, 'admin2', 'hakan.akca@supinternet.fr', '$2y$10$c2FsdHlzYWx0eXNhbHR5cuzj9qkKiCpTp1u0VGOYpG/Z4EQXG/gym', 'hakan2', 'hakan2', 'paris2'),
-(29, 'hakan', 'hakan.akca@supinternet.fr', '$2y$10$c2FsdHlzYWx0eXNhbHR5cusbU.jhZ3/Zaoa0X2v3/o1mXueLcWACG', 'hakan', 'hakan', 'paris');
+(30, 'admin', 'hqkqnqnqnqnqnqnq@gmail.com', '$2y$10$c2FsdHlzYWx0eXNhbHR5cuFYLWqyckAGswm2.X4Qs/DrZlN4kmx/a', 'qjqjqjqjjqjqjqqjjqqjqjqj', 'qjqjqjqjqjqjqjjqqjjqjqjq', 'qjqjqjqjqjqjqjjqq');
 
 --
 -- Index pour les tables exportées
@@ -92,7 +81,7 @@ ALTER TABLE `com`
 --
 ALTER TABLE `commentary`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_com` (`id_com`);
+  ADD KEY `id_com` (`user_com`);
 
 --
 -- Index pour la table `users`
@@ -109,17 +98,17 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `com`
 --
 ALTER TABLE `com`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
 --
 -- AUTO_INCREMENT pour la table `commentary`
 --
 ALTER TABLE `commentary`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 --
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 --
 -- Contraintes pour les tables exportées
 --
@@ -129,4 +118,3 @@ ALTER TABLE `users`
 --
 ALTER TABLE `com`
   ADD CONSTRAINT `com_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
-
