@@ -27,16 +27,6 @@
                 <img class="article-image" src="{{ i['image'] }}">
             </div>
         </div>
-
-        {% if name is defined %}
-            <form name="com-post" id="com-post" method="post" action='?action=articleview&article={{ i['title'] }}'>
-                <input type="text" name="send-com">
-                <input type="text" name="id_article" value="{{ i['id'] }}">
-                <input type="submit" value="envoyer commentaire">
-            </form>
-            <p id="error-block"></p>
-            <p id="success-block"></p>
-        {% endif %}
         </div>
     {% endfor %}
     {% for i in comShow %}
