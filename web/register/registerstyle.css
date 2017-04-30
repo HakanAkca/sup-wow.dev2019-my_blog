@@ -34,6 +34,16 @@ input{
     font-weight: bold;
 }
 
+.city{
+    margin-right: 16px;
+    margin-left: 15px;
+}
+
+.lastname{
+    margin-right: 16px;
+    margin-left: 15px;
+}
+
 .username {
     margin-left: 10px;
 }
@@ -47,7 +57,8 @@ input{
 }
 .submit {
     margin-left: 0px;
-    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-top: -10px;
     display: inline-block;
     outline: 0;
     background: #670502;
@@ -84,11 +95,11 @@ input:-webkit-autofill{
     position: absolute;
     padding-top: 10px;
     display: flex;
-    height: 370px;
+    height: 580px;
     width: 300px;
     padding-left: 10px;
     padding-right: 10px;
-    top : 42%;
+    top : 7%;
     bottom: 0;
     left: 0;
     right: 0;
@@ -122,14 +133,36 @@ input:-webkit-autofill{
         display: block;
     }
     .register-block {
-        top : 60%;
+        top : 35%;
         padding-top: 10px;
         width: 500px;
-        height: 300px;
+        height: 480px;
     }
     input{
         margin-left: 100px;
     }
+    .ville{
+        margin-left: 20px;
+    }
+    .city{
+        margin-left: 180px;
+    }
+
+    .nom{
+        margin-left: 20px ;
+    }
+    .lastname{
+        margin-left: 180px;
+    }
+
+    .firstname{
+        margin-left: 144px;
+    }
+
+    .submit{
+        margin-top: 10px;
+    }
+
     .username {
         margin-left: 160px;
     }
@@ -145,14 +178,38 @@ input:-webkit-autofill{
 @media screen and (min-width: 1025px){
 
     .register-block{
-        top : 60%;
+        top : 35%;
         padding-top: 10px;
         width: 700px;
-        height: 340px;
+        height: 480px;
+    }
+
+    .submit{
+        margin-top: 10px;
     }
     input{
         margin-left: 100px;
     }
+
+    .ville{
+        margin-left: 20px;
+    }
+
+    .city{
+        margin-left: 180px;
+    }
+
+    .nom{
+        margin-left: 20px ;
+    }
+    .lastname{
+        margin-left: 180px;
+    }
+
+    .firstname{
+        margin-left: 148px;
+    }
+
     .username {
         margin-left: 160px;
     }

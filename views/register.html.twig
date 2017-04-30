@@ -2,7 +2,9 @@
     <link rel="stylesheet" href="web/register/registerstyle.css">
     <link rel="stylesheet" href="web/header/styleheader.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="web/register.js"></script>
+    <script src="web/registerForm.js"></script>
 
     <video class="video" loop muted autoplay>
         <source src="web/login/background.mp4" type="video/mp4">
@@ -14,15 +16,15 @@
     <div class="register-block">
         <span class="sup-wow"> Creer un compte !</span>
         <form action="?action=register" method="POST" name="register-form">
-            Login : <input type="text" name="username" class="username"><br><br>
-            Email : <input type="text" name="email" class="email"><br><br>
-            Password : <input type="password" name="password" class="password"><br><br>
-            Prénom : <input type="text" name="firstname" class="firstname"><br><br>
-            Nom : <input type="text" name="lastname" class="lastname"><br><br>
-            Ville : <input type="text" name="city" class="city"><br><br>
-            <input type="submit" class="submit" value="S'enregistrer !">
+            Login : <input type="text" name="username" class="username" id="username"><br><br>
+            Email : <input type="text" name="email" class="email" id="email"><br><br>
+            Password : <input type="password" name="password" class="password" id="password"><br><br>
+            <span class="prenom ">Prénom :</span> <input type="text" name="firstname" class="firstname" id="firstname"><br><br>
+            <span class="nom">Nom :</span><input type="text" name="lastname" class="lastname" id="lastname"><br><br>
+            <span class="ville">Ville :</span> <input type="text" name="city" class="city" id="city"><br><br><span id="badlog"></span><br>
+            <input type="submit" class="submit" value="S'enregistrer !"><br>
+            <a href="?action=login" class="register">Tu as déjà un compte ?</a>
         </form>
-        <a href="?action=login" class="register">Tu as déjà un compte ?</a>
         <p id="error-block"></p>
         <p id="success-block"></p>
     </div>

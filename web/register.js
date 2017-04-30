@@ -27,12 +27,11 @@ window.onload = function(){
                 }, 5000);
             } else{
                 var errors = JSON.parse(http.responseText);
-                for(var error in errors['errors']){
-                    errorBlock.innerHTML += error+' : '+errors['errors'][error]+'<br>';
-                }
+                $('#badlog').text('Champs vide ou email non valide');
             }
 
         };
+
         http.send(params);
         return false;
     };

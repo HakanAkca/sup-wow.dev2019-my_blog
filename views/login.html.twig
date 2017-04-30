@@ -1,13 +1,13 @@
+<link rel="stylesheet" href="web/login/loginstyle.css">
+<link rel="stylesheet" href="web/header/styleheader.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="web/login.js"></script>
+<script src="web/loginForm.js"></script>
 {% block content %}
     <video class="video" loop muted autoplay>
         <source src="web/login/background.mp4" type="video/mp4">
     </video>
-
-    <script src="web/login.js"></script>
-    <link rel="stylesheet" href="web/login/loginstyle.css">
-    <link rel="stylesheet" href="web/header/styleheader.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <div class="header">
         <li><a href='?action=home'>Home</a></li>
         <li><a href='?action=register'>Register</a></li>
@@ -16,11 +16,12 @@
         <div class="connexion-block">
             <span class="sup-wow">BLOG SUP'WOW</span>
             <form action="?action=login" method="POST" name="login-form" class="form">
-                Login :<input type="text" name="username" class="username"><br>
-                Password : <input type="password" name="password" class=""><br>
-                <input type="submit" class="submit" value="Se connecter !">
+                Login :<input type="text" name="username" class="username" id="username"><br>
+                Password : <input type="password" name="password" id="password"><br><span id="badlog"></span><br>
+                <input type="submit" class="submit" value="Se connecter !" id="connect">
             </form>
-            <div class="register"><a href="?action=register">Pas encore inscrit !</a></div>
+            <a href="?action=register" class="register">Pas encore inscrit ?</a>
+            <div id="connect" class="register"></div>
             <p id="error-block"></p>
             <p id="success-block"></p>
         </div>
