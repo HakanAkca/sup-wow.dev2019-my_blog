@@ -6,19 +6,22 @@
     <link rel="stylesheet" href="web/edit/editstyle.css">
     <link rel="stylesheet" href="web/home/stylehome.css">
     <link rel="stylesheet" href="web/header/styleheader.css">
+    <script src="web/edit.js"></script>
 </head>
 <body>
 
 {% block content %}
     <div class="edit-view">
         <h1>Merci de remplir tous les champs pour proccéder au changement</h1>
-        <form action="?action=edit" method="POST" name="changes-infos" id="changes-infos">
+        <form action="?action=edit" method="POST" name="change-form" id="change-form">
             Changer de mail : <input type="email" name="change-email">
             Changer prénom: <input type="text" name="change-prenom">
             Changer nom: <input type="text" name="change-nom">
             Changer ville: <input type="text" name="change-ville">
             <input type="submit" value="submit">
         </form>
+        <p id="errorBlock"></p>
+        <p id="successBlock"></p>
     </div>
     <div class="content"></div>
 {% endblock %}
